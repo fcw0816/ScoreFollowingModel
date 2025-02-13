@@ -78,14 +78,14 @@ if __name__ == '__main__':
 
     import argparse
     parser = argparse.ArgumentParser(description='Network Test Video')
-    parser.add_argument('--param_path', help='path to the stored network', type=str, default=r"D:\scorefollowersystem\cyolo_score_following\trained_models\cyolo_sb\best_model.pt")
+    parser.add_argument('--param_path', help='path to the stored network', type=str)
     parser.add_argument('--test_dir', help='path to test dataset.', type=str)
     parser.add_argument('--test_piece', help='name of test piece (do not specify extension).', type=str)
     parser.add_argument('--scale_width', help='sheet image scale factor.', type=int, default=416)
     parser.add_argument('--plot', help='intermediate plotting', default=False, action='store_true')
     parser.add_argument('--gt_only', help='only plot ground truth', default=False, action='store_true')
     parser.add_argument('--page', help='only track given page (start indexing at 0)', type=int, default=None)
-    parser.add_argument('--seq_enc', type=str, default="lstm")
+    parser.add_argument('--seq_enc', type=str, default="transformer")
     args = parser.parse_args()
 
     piece_name = args.test_piece

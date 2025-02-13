@@ -108,10 +108,10 @@ def train(args):
 
     train_dataset = load_dataset(args.train_sets, augment=args.augment, scale_width=args.scale_width,
                                  split_files=args.train_split_files, ir_path=args.ir_path, load_audio=args.load_audio,
-                                 predict_sb=predict_sb)
+                                 predict_sb=predict_sb, score_type=args.score_type)
 
     val_dataset = load_dataset(args.val_sets, augment=False, scale_width=args.scale_width,
-                               split_files=args.val_split_files,  load_audio=args.load_audio, predict_sb=predict_sb)
+                               split_files=args.val_split_files,  load_audio=args.load_audio, predict_sb=predict_sb, score_type=args.score_type)
 
     batch_size = train_parameters['batch_size']
 
@@ -255,6 +255,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_sets', help='path to validation datasets.', nargs='+')
     parser.add_argument('--val_split_files', help='split files to only evaluate a subset from the validation disr',
                         default=None, nargs='+')
+    parser.add_argument('--score_type', type=str, default="basic")
 
     # arguments for optimizer and scheduler
     parser.add_argument('--batch_size', help='batch size.', type=int, default=32)

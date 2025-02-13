@@ -28,6 +28,7 @@ if __name__ == '__main__':
     parser.add_argument('--gt_only', help='only plot ground truth', default=False, action='store_true')
     parser.add_argument('--page', help='only track given page (start indexing at 0)', type=int, default=None)
     parser.add_argument('--gpu', type=int, default=1)
+    parser.add_argument('--seq_enc', type=str, default="transformer")
     args = parser.parse_args()
 
     piece_name = args.test_piece
@@ -90,7 +91,11 @@ if __name__ == '__main__':
                         
                         spec_frame = network.compute_spec([sig_excerpt], tempo_aug=False)[0]
                         
-                        z, hidden = network.conditioning_network.get_conditioning3(spec_frame, hidden=hidden)
+                        # z, hidden = network.conditioning_network.get_conditioning3(spec_frame, hidden=hidden)
+                        if args.seq_enc == "lstm":
+                            z, hidden = network.conditioning_network.get_conditioning_lstm(spec_frame, hidden=hidden)
+                        elif args.seq_enc == "transformer":
+                            z, hidden = network.conditioning_network.get_conditioning_transformer(spec_frame, hidden=hidden)
                         inference_out, pred = network.predict(score_tensor[page:page+1], z)
                         x1, y1, x2, y2 = [], [], [], []
                         for class_idx in range(network.nc):
