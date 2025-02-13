@@ -1,1 +1,1 @@
-# Score-Following-Model
+# ScoreFollowingModel
