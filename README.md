@@ -1,7 +1,14 @@
 # ScoreFollowingModel
 
 ### Installation
-    same as https://github.com/CPJKU/cyolo_score_following
+    mkdir ScoreFollowingModel
+    cd ScoreFollowingModel
+    git https://github.com/fcw0816/ScoreFollowingModel.git
+    
+    # It's recommended to create a virtual environment
+    conda create -n ScoreFollowingModel python=3.7 -f environment.yml
+    conda activate ScoreFollowingModel
+    
 ### Dataset
      /MiiSLab_NAS/Student_Work/xiaofu/dataset/msmd
 
