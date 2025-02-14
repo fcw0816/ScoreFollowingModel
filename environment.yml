@@ -1,4 +1,4 @@
-name: cyolo_score_following
+name: scorefollowingmodel
 
 channels:
   - pytorch
